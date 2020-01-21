@@ -1,0 +1,98 @@
+
+//@import './node_modules/carbon-components/scss/components/button/button';
+
+//@import "~tailwindcss/base";
+//@import "./node_modules/tailwindcss/base";
+//@import "./node_modules/tailwindcss/components";
+
+.bg-wurp {
+    background: #efecea;
+}
+.bg-yurp {
+    background: #f9c535;
+}
+
+.bg-reddish {
+    background: #e04462;
+}
+.bg-black-alt {
+    background: #191919;
+}
+
+.bg-yellow {
+    background-color: #fcc81e;
+}
+.bg-black-alpha-30 {
+    background-color: rgba(0, 0, 0, .3);
+}
+.text-yellow{
+    color: #fcc81e !important;
+    text-shadow: 0px 2px 3px #555;
+}
+.border-white{
+    border-color: #efecea;
+}
+.sm\:w-45 {
+    width: 45%;
+}
+.title {
+    font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+  
+ /**
+.btn {
+    @apply bg-teal-700 text-white text-sm border-none rounded font-bold p-3 mt-2;
+}
+.btn:hover {
+    @apply bg-teal-900;
+}
+*/
+  
+//@import "./node_modules/tailwindcss/utilities";
+
+
+$pell-actionbar-color: #FFF !default;
+$pell-border-color: rgba(10, 10, 10, 0.1) !default;
+$pell-border-style: solid !default;
+$pell-border-width: 1px !default;
+$pell-button-height: 30px !default;
+$pell-button-selected-color: #F0F0F0 !default;
+$pell-button-width: 30px !default;
+$pell-content-height: 300px !default;
+$pell-content-padding: 10px !default;
+
+.pell {
+  border: $pell-border-width $pell-border-style $pell-border-color;
+  box-sizing: border-box;
+}
+
+.pell-content {
+  box-sizing: border-box;
+  height: $pell-content-height;
+  outline: 0;
+  overflow-y: auto;
+  padding: $pell-content-padding;
+}
+
+.pell-actionbar {
+  background-color: $pell-actionbar-color;
+  border-bottom: $pell-border-width $pell-border-style $pell-border-color;
+}
+
+.pell-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: $pell-button-height;
+  outline: 0;
+  width: $pell-button-width;
+  vertical-align: bottom;
+}
+
+.pell-button-selected {
+  background-color: $pell-button-selected-color;
+}

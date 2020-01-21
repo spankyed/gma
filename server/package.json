@@ -1,0 +1,33 @@
+{
+  "name": "dobbers-inc",
+  "author": "AbuDobby",
+  "version": "1.0.0",
+  "description": "Dobby Private Network (Vishva)",
+  "repository": "https://github.com/spankyed/dobby.git",
+  "license": "MIT",
+  "main": "./server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "files": [
+    "src/"
+  ],
+  "dependencies": {
+    "request": "2.81.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "watson-developer-cloud": "^3.15.0"
+  },
+  "devDependencies": {
+    "body-parser": "1.17.1",
+    "cfenv": "1.0.4",
+    "chance": "1.0.6",
+    "coveralls": "2.13.0",
+    "dotenv": "4.0.0",
+    "express": "4.15.2"
+  },
+  "engines": {
+    "node": ">=7.6.0"
+  }
+}

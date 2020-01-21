@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="https://www.tailwindtoolbox.com/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://www.tailwindtoolbox.com/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://www.tailwindtoolbox.com/favicon-16x16.png">
+
+	<link rel="mask-icon" href="https://www.tailwindtoolbox.com/safari-pinned-tab.svg" color="#5bbad5">
+
+	<!--carbon must load first for reset -->
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script> -->
+
+	<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+	<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+</head>
+
+	<body class="bg-black-alt font-sans antialiased leading-normal tracking-normal">	
+		<script src="./src/index.js"></script>		
+	</body>
+	
+	<style>
+		.bg-black-alt  {
+			background:#191919;
+		}
+		.text-black-alt  {
+			color:#191919;
+		}
+		.border-black-alt {
+			border-color: #191919;
+		}
+		
+	</style>
+
+	<script>/*
+		new Chart(document.getElementById("chartjs-7"), {
+				"type": "bar",
+				"data": {
+						"labels": ["January", "February", "March", "April"],
+						"datasets": [{
+								"label": "Page Impressions",
+								"data": [10, 20, 30, 40],
+								"borderColor": "rgb(255, 99, 132)",
+								"backgroundColor": "rgba(255, 99, 132, 0.2)"
+						}, {
+								"label": "Adsense Clicks",
+								"data": [5, 15, 10, 30],
+								"type": "line",
+								"fill": false,
+								"borderColor": "rgb(54, 162, 235)"
+						}]
+				},
+				"options": {
+						"scales": {
+								"yAxes": [{
+										"ticks": {
+												"beginAtZero": true
+										}
+								}]
+						}
+				}
+		});
+		new Chart(document.getElementById("chartjs-0"), {
+				"type": "line",
+				"data": {
+						"labels": ["January", "February", "March", "April", "May", "June", "July"],
+						"datasets": [{
+								"label": "Views",
+								"data": [65, 59, 80, 81, 56, 55, 40],
+								"fill": false,
+								"borderColor": "rgb(75, 192, 192)",
+								"lineTension": 0.1
+						}]
+				},
+				"options": {}
+		});
+		new Chart(document.getElementById("chartjs-1"), {
+				"type": "bar",
+				"data": {
+						"labels": ["January", "February", "March", "April", "May", "June", "July"],
+						"datasets": [{
+								"label": "Likes",
+								"data": [65, 59, 80, 81, 56, 55, 40],
+								"fill": false,
+								"backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+								"borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+								"borderWidth": 1
+						}]
+				},
+				"options": {
+						"scales": {
+								"yAxes": [{
+										"ticks": {
+												"beginAtZero": true
+										}
+								}]
+						}
+				}
+		});
+		new Chart(document.getElementById("chartjs-4"), {
+				"type": "doughnut",
+				"data": {
+						"labels": ["P1", "P2", "P3"],
+						"datasets": [{
+								"label": "Issues",
+								"data": [300, 50, 100],
+								"backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
+						}]
+				}
+		});*/
+	</script>
+
+	<script>
+		/*Toggle dropdown list*/
+		/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+		/*
+		var userMenuDiv = document.getElementById("userMenu");
+		var userMenu = document.getElementById("userButton");
+		
+		var navMenuDiv = document.getElementById("nav-content");
+		var navMenu = document.getElementById("nav-toggle");
+		
+		document.onclick = check;
+		function check(e){
+			var target = (e && e.target) || (event && event.srcElement);
+			//User Menu
+			if (!checkParent(target, userMenuDiv)) {
+			// click NOT on the menu
+			if (checkParent(target, userMenu)) {
+				// click on the link
+				if (userMenuDiv.classList.contains("invisible")) {
+				userMenuDiv.classList.remove("invisible");
+				} else {userMenuDiv.classList.add("invisible");}
+			} else {
+				// click both outside link and outside menu, hide menu
+				userMenuDiv.classList.add("invisible");
+			}
+			}
+			
+			//Nav Menu
+			if (!checkParent(target, navMenuDiv)) {
+			// click NOT on the menu
+			if (checkParent(target, navMenu)) {
+				// click on the link
+				if (navMenuDiv.classList.contains("hidden")) {
+				navMenuDiv.classList.remove("hidden");
+				} else {navMenuDiv.classList.add("hidden");}
+			} else {
+				// click both outside link and outside menu, hide menu
+				navMenuDiv.classList.add("hidden");
+			}
+			}
+			
+		}
+		function checkParent(t, elm) {
+			while(t.parentNode) {
+			if( t == elm ) {return true;}
+			t = t.parentNode;
+			}
+			return false;
+		}*/
+	</script>
+		
+</html>
