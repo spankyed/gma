@@ -10,10 +10,12 @@ export default {
     },
     view: (state, actions) => ({path}) => {
         let color = [{ path: '/', color: 'yellow'},
-                              { path: '/tasks', color: 'green'},
-                              { path: '/products', color: 'pink'}].filter(route => route.path == path)[0].color
+                     { path: '/messages', color: 'red'},
+                     { path: '/tasks', color: 'green'},
+                     { path: '/products', color: 'pink'},
+                     { path: '/collections', color: 'blue'}].filter(route => route.path == path)[0].color
         return (
-            <div class="fixed w-full">
+            <div class="fixed w-full" style="z-index:9001;">
                 <nav id="header" class="bg-gray-900 relative w-full z-10 top-0 shadow border border-gray-800 ">
                     <div class="w-full max-w-6xl container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-2 md:py-2">
                         <div class="w-full md:flex md:items-center lg:items-base">
@@ -56,8 +58,8 @@ export default {
                                         </a>
                                     </Link>
                                     <Link to='/collections' class="mr-3 flex-1 md:flex-initial lg:flex-1">
-                                        <a href="#" class={`${(path == '/collections') && 'border-pink-600'} block px-2 py-1 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500`}>
-                                            <i class={`${(path == '/collections') && 'text-pink-600'} fas fa-stream pr-0 md:pr-3`}></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Collections</span>
+                                        <a href="#" class={`${(path == '/collections') && 'border-blue-600'} block px-2 py-1 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-blue-500`}>
+                                            <i class={`${(path == '/collections') && 'text-blue-600'} fas fa-stream pr-0 md:pr-3`}></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">Collections</span>
                                         </a>
                                     </Link>
                                 </ul>
@@ -67,7 +69,7 @@ export default {
                 </nav>
 
                 {/* colored bar under nav */}
-                <div class={`relative w-full bg-${color}-700 h-1 p-1 shadow text-xl text-white text-center`}>
+                <div class={`relative w-full bg-${color}-700 h-1 pb-3 text-xl text-white text-center`}>
                  </div>
             </div>
             

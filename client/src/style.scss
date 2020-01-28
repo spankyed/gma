@@ -1,10 +1,37 @@
+// @import "tailwindcss/base"; try to get to work
+@import "./node_modules/tailwindcss/base";
+//@import "./custom-base-styles.css";
 
-//@import './node_modules/carbon-components/scss/components/button/button';
+@import "./node_modules/tailwindcss/components";
+//@import "./custom-components.css";
 
-//@import "~tailwindcss/base";
-//@import "./node_modules/tailwindcss/base";
-//@import "./node_modules/tailwindcss/components";
+@import "./node_modules/tailwindcss/utilities";
+//@import "./custom-utilities.css";
 
+.todo-item {
+    transition: 0.2s ease-in-out;
+    @apply m-0 p-4 text-gray-100 flex border-l-4 cursor-pointer mb-1;
+  
+    &.active {
+      @apply border-orange-500;
+    }
+    &.completed {
+      @apply border-green-400 text-gray-600;
+    }
+  }
+  
+  .todo-item:hover {
+    @apply px-5;
+  }
+  
+
+.modal-active {
+    overflow-x: hidden;
+    overflow-y: visible !important;
+}
+.opac {
+    background:rgba(0,0,0,0.5);
+}
 .bg-wurp {
     background: #efecea;
 }

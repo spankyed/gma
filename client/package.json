@@ -1,5 +1,5 @@
 {
-  "name": "angels-website",
+  "name": "Kyles_Grandma",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +8,12 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html --public-url ./"
   },
-  "author": "VAngel",
-  "license": "ISC",
+  "author": "Angel",
+  "license": "MIT",
   "dependencies": {
     "@hyperapp/router": "^0.7.2",
     "carbon-components": "^10.3.1",
     "hyperapp": "^1.2.9",
-    "pell": "^1.0.6",
     "serve": "^10.1.1"
   },
   "devDependencies": {
@@ -24,8 +23,8 @@
     "@babel/preset-env": "^7.5.5",
     "@fullhuman/postcss-purgecss": "^1.1.0",
     "@tailwindcss/custom-forms": "^0.2.1",
+    "tailwindcss": "^1.0.4",
     "parcel": "^1.11.0",
-    "sass": "^1.21.0",
-    "tailwindcss": "^1.0.4"
+    "sass": "^1.21.0"
   }
 }
