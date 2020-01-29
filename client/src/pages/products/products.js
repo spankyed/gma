@@ -7,25 +7,19 @@ export default initial => ({
     products: initial,
     image: {},
     images: [],
-    show: false,
-    src: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
     ...Add.state
   },
   actions: {
     delete: (evt) => state => ({ cat: 'meow' }),
-    toggleAdd: _ => state => ({show: !state.show}),
-    preview: (evt) => state => ({ src: URL.createObjectURL(evt.target.files[0]) }),
     ...Add.actions
   },
   view: (state, actions) => ({match}) => {
-    //const AddModal = Add.view(state.tasks, actions.tasks)
-    const show =false;
+    const AddModal = Add.view
     return (     
       <div class={`${state.show && "modal-active"} w-full h-screen pt-16 justify-center`}>
         {
-          (state.show && <Add state={state} actions={actions}/>)
+          (state.show && <AddModal state={state} actions={actions}/>)
         }
-        <div>
           <div class="flex w-full -mb-1">
             <div class="w-3/12 bg-gray-100 px-2 py-2">
               <div class="pr-2">
@@ -43,16 +37,15 @@ export default initial => ({
               <input class="appearance-none block w-full bg-grey-lighter text-grey-darker px-4 py-2" id="description" type="text" placeholder="Search"></input>
             </div>
             <div class="w-2/12 bg-gray-100">
-              <button class="float-right bg-pink-700 hover:bg-pink-900 text-white font-normal py-2 px-3" onclick={actions.toggleAdd}>
-                Add
-                <svg class="text-white fill-current inline -mt-1 ml-2" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15L17 7 15 7 15 15 7 15 7 17 15 17 15 25 17 25 17 17 25 17 25 15 17 15z"></path></svg>
-              </button>
               <button class="float-right bg-yellow-700 hover:bg-yellow-900 text-white font-normal py-2 px-4" onclick={actions.toggleAdd}>
                 Publish
                 <svg class="text-white fill-current inline -mt-1 ml-2" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15L17 7 15 7 15 15 7 15 7 17 15 17 15 25 17 25 17 17 25 17 25 15 17 15z"></path></svg>
               </button>
+              <button class="float-right bg-pink-700 hover:bg-pink-900 text-white font-normal py-2 px-3" onclick={actions.toggleAdd}>
+                Add
+                <svg class="text-white fill-current inline -mt-1 ml-2" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15L17 7 15 7 15 15 7 15 7 17 15 17 15 25 17 25 17 17 25 17 25 15 17 15z"></path></svg>
+              </button>
             </div>
-
           </div>
 
           <div class="flex w-full">
@@ -97,7 +90,6 @@ export default initial => ({
               }
             </div>
           </div> 
-        </div>
       </div>
       ) 
   }

@@ -13,7 +13,7 @@ export default initial => ({
 <div>
         <div class="w-full h-32" style="background-color: #449388"></div>
 
-        <div class="container mx-auto" style="margin-top: -128px;">
+        <div class="container mx-auto pt-20 md:pt-16" style="margin-top: -128px;">
             <div class="py-6 h-screen">
                 <div class="flex border border-grey rounded shadow-lg h-full">
 
@@ -21,7 +21,7 @@ export default initial => ({
                     <div class="w-1/3 border flex flex-col">
 
                         
-                        <div class="py-2 px-3 bg-grey-lighter flex flex-row justify-between items-center">
+                        <div class="py-2 px-3 bg-gray-200 flex flex-row justify-between items-center">
                             <div>
                                 <img class="w-10 h-10 rounded-full" src="http://andressantibanez.com/res/avatar.png"/>
                             </div>
@@ -40,18 +40,18 @@ export default initial => ({
                         </div>
 
                         
-                        <div class="py-2 px-2 bg-grey-lightest">
+                        <div class="py-2 px-2 bg-gray-100">
                             <input type="text" class="w-full px-2 py-2 text-sm" placeholder="Search or start new chat"/>
                         </div>
 
                         
-                        <div class="bg-grey-lighter flex-1 overflow-auto">
+                        <div class="bg-gray-200 flex-1 overflow-auto">
                             <div class="px-3 flex items-center bg-grey-light cursor-pointer">
                                 <div>
                                     <img class="h-12 w-12 rounded-full"
                                          src="https://darrenjameseeley.files.wordpress.com/2014/09/expendables3.jpeg"/>
                                 </div>
-                                <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+                                <div class="ml-4 flex-1 border-b border-gray-200 py-4">
                                     <div class="flex items-bottom justify-between">
                                         <p class="text-grey-darkest">
                                             New Movie! Expendables 4
@@ -65,12 +65,12 @@ export default initial => ({
                                     </p>
                                 </div>
                             </div>
-                            <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
+                            <div class="bg-white px-3 flex items-center hover:bg-gray-200 cursor-pointer">
                                 <div>
                                     <img class="h-12 w-12 rounded-full"
                                          src="https://www.biography.com/.image/t_share/MTE5NDg0MDU1MTIyMTE4MTU5/arnold-schwarzenegger-9476355-1-402.jpg"/>
                                 </div>
-                                <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+                                <div class="ml-4 flex-1 border-b border-gray-200 py-4">
                                     <div class="flex items-bottom justify-between">
                                         <p class="text-grey-darkest">
                                             Arnold Schwarzenegger
@@ -84,12 +84,12 @@ export default initial => ({
                                     </p>
                                 </div>
                             </div>
-                            <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
+                            <div class="bg-white px-3 flex items-center hover:bg-gray-200 cursor-pointer">
                                 <div>
                                     <img class="h-12 w-12 rounded-full"
                                          src="https://www.famousbirthdays.com/headshots/russell-crowe-6.jpg"/>
                                 </div>
-                                <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+                                <div class="ml-4 flex-1 border-b border-gray-200 py-4">
                                     <div class="flex items-bottom justify-between">
                                         <p class="text-grey-darkest">
                                             Russell Crowe
@@ -103,12 +103,12 @@ export default initial => ({
                                     </p>
                                 </div>
                             </div>
-                            <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
+                            <div class="bg-white px-3 flex items-center hover:bg-gray-200 cursor-pointer">
                                 <div>
                                     <img class="h-12 w-12 rounded-full"
                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGpYTzuO0zLW7yadaq4jpOz2SbsX90okb24Z9GtEvK6Z9x2zS5"/>
                                 </div>
-                                <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+                                <div class="ml-4 flex-1 border-b border-gray-200 py-4">
                                     <div class="flex items-bottom justify-between">
                                         <p class="text-grey-darkest">
                                             Tom Cruise
@@ -122,12 +122,12 @@ export default initial => ({
                                     </p>
                                 </div>
                             </div>
-                            <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
+                            <div class="bg-white px-3 flex items-center hover:bg-gray-200 cursor-pointer">
                                 <div>
                                     <img class="h-12 w-12 rounded-full"
                                          src="https://www.biography.com/.image/t_share/MTE5NTU2MzE2MjE4MTY0NzQ3/harrison-ford-9298701-1-sized.jpg"/>
                                 </div>
-                                <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+                                <div class="ml-4 flex-1 border-b border-gray-200 py-4">
                                     <div class="flex items-bottom justify-between">
                                         <p class="text-grey-darkest">
                                             Harrison Ford
@@ -150,7 +150,7 @@ export default initial => ({
                     <div class="w-2/3 border flex flex-col">
 
                         
-                        <div class="py-2 px-3 bg-grey-lighter flex flex-row justify-between items-center">
+                        <div class="py-2 px-3 bg-gray-200 flex flex-row justify-between items-center">
                             <div class="flex items-center">
                                 <div>
                                     <img class="w-10 h-10 rounded-full" src="https://darrenjameseeley.files.wordpress.com/2014/09/expendables3.jpeg"/>
@@ -308,7 +308,7 @@ export default initial => ({
                         </div>
 
              
-                        <div class="bg-grey-lighter px-4 py-4 flex items-center">
+                        <div class="bg-gray-200 px-4 py-4 flex items-center">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path opacity=".45" fill="#263238" d="M9.153 11.603c.795 0 1.439-.879 1.439-1.962s-.644-1.962-1.439-1.962-1.439.879-1.439 1.962.644 1.962 1.439 1.962zm-3.204 1.362c-.026-.307-.131 5.218 6.063 5.551 6.066-.25 6.066-5.551 6.066-5.551-6.078 1.416-12.129 0-12.129 0zm11.363 1.108s-.669 1.959-5.051 1.959c-3.505 0-5.388-1.164-5.607-1.959 0 0 5.912 1.055 10.658 0zM11.804 1.011C5.609 1.011.978 6.033.978 12.228s4.826 10.761 11.021 10.761S23.02 18.423 23.02 12.228c.001-6.195-5.021-11.217-11.216-11.217zM12 21.354c-5.273 0-9.381-3.886-9.381-9.159s3.942-9.548 9.215-9.548 9.548 4.275 9.548 9.548c-.001 5.272-4.109 9.159-9.382 9.159zm3.108-9.751c.795 0 1.439-.879 1.439-1.962s-.644-1.962-1.439-1.962-1.439.879-1.439 1.962.644 1.962 1.439 1.962z"></path></svg>
                             </div>

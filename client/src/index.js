@@ -8,7 +8,6 @@ import  Tasks  from './pages/tasks/tasks'
 import  Messages  from './pages/messages/messages'
 import  Products  from './pages/products/products'
 import  Collections  from './pages/collections/collections'
-//import  Analytics  from './pages/analytics/analytics'
 
 import  data  from './data'
 
