@@ -4,8 +4,8 @@ const FileSync = require('lowdb/adapters/FileSync')
 class database {
   constructor (defaults) {
     this.db = low(new FileSync('data/db.json'))
-    this.db.defaults = defaults ? defaults : { products: [], user: {}, count: 0 }
-    console.log("state", this.db.getState())
+    this.db.defaults(defaults ? defaults : { products: [], user: {}, count: 0 }).write()
+    //console.log("state", this.db.getState())
   }
   _get (user, source) {
     return this.db
@@ -17,6 +17,7 @@ class database {
   addProduct (product) {
     console.log(this.db
       .get('products').value())
+      //console.log("state", this.db.getState())
     return this.db
     .get('products')
     .push(product)

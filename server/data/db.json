@@ -1,1 +1,18 @@
-{}
+{
+  "products": [
+    {
+      "image": "uploads/product_image",
+      "description": "An id card",
+      "price": "110",
+      "quantity": "1",
+      "size": "12",
+      "collection": "Dresses",
+      "": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "user": {},
+  "count": 0
+}

@@ -19,7 +19,7 @@ export default {
 
       state.form.append('file', file, "product_image");
       var elements = document.forms["add"].elements;
-      for (var i=0; i < elements.length; i++){
+      for (var i=0; i < elements.length-2; i++){ //-2 for buttons
         state.form.append(elements[i].id, elements[i].value)
       }
 

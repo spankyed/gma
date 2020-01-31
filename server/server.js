@@ -26,13 +26,17 @@ app.post('/products/upload', upload.single('file'), function (req, res, next) {
   //var resp = await conversation.handleIncoming(req.body, 'mock-api')
 
   var form = req.body
+  /*
   for (let field in form) {
     if (field == "") delete form.field
-  }
+    console.log('deleted', form)
+  }*/
+  console.log("saving image")
   form.image = 'uploads/' + req.file.originalname;
   db.saveImage(req.file)
-  console.log(db.getProducts())
-  db.addProduct(form).then((e) => console.log('State has been saved',e))
+  //console.log(db.getProducts())
+  console.log(form)
+  db.addProduct(form)//.then((e) => console.log('State has been saved',e))
 
   res.status(200).send({text:"hello world"})
 
