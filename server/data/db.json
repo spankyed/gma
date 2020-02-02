@@ -11,6 +11,14 @@
         "",
         ""
       ]
+    },
+    {
+      "image": "uploads/product_image",
+      "description": "An id card",
+      "price": "110",
+      "quantity": "",
+      "size": "",
+      "collection": "Dresses"
     }
   ],
   "user": {},

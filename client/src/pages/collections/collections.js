@@ -22,7 +22,7 @@ export default initial => ({
     const show =false;
     return (     
       
-      <div class={`${state.show && "modal-active"}w-full h-screen pt-16 justify-center overflow-x-auto`}>
+      <div class={`${state.show && "modal-active"} max-w-6xl w-full mx-auto h-screen pt-16 justify-center overflow-x-auto`}>
         {
           (state.show && <Add state={state} actions={actions}/>)
         }

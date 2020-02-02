@@ -40,7 +40,7 @@ app.post('/products/upload', upload.single('file'), function (req, res, next) {
 
   res.status(200).send({text:"hello world"})
 
-}, function (error, response) {
+}, function (error, response) { // is this ever reached?
   if (error) {
     return res.send(error);
   } else {

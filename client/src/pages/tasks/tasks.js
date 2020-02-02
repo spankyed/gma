@@ -25,7 +25,7 @@ export default initial => ({
           <span class="text-center inline-block w-full p-4 text-gray-600 text-xs">Add a new item to get started!</span>
           <li class="todo-item active" data-id="0">test</li>
         </ul>
-        <div class="flex py-4 border-t border-gray-900 justify-between">
+        <div class="flex py-4 border-t border-gray-600 justify-between">
         <div>
             <button id="js-filter-all" class="text-xs mr-3 font-bold hover:underline text-gray-500 text-green-500 focus:outline-none">All</button>
           <button id="js-filter-active" class="text-xs mr-3  hover:underline text-gray-500 focus:outline-none">Active</button>
