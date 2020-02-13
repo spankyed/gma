@@ -4,12 +4,12 @@ import { Link, Route } from "@hyperapp/router"
 export default {
   state: {
     form: null,
-    show: false,
+    showAssign: false,
     src: "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
     fileName: 'No file selected'
   },
   actions: {
-    toggleAdd: _ => state => ({show: !state.show}),
+    toggleAssign: _ => state => ({showAssign: !state.showAssign}),
     preview: (evt) => state => ({ src: URL.createObjectURL(evt.target.files[0]), fileName: evt.target.files[0].name }),
   },
   view: ({state, actions}) =>_=> {
@@ -37,11 +37,11 @@ export default {
     }
 
     return (
-      <div onclick={actions.toggleAdd} class="opac absolute w-full h-full top-0 left-0 pt-16 justify-center" style="z-index:9000;">
+      <div onclick={actions.toggleAssign} class="opac absolute w-full h-full top-0 left-0 pt-16 justify-center" style="z-index:9000;">
         <div class="w-full flex mx-auto text-gray-800 leading-normal max-w-6xl" >
           <form  class="w-full relative" name="add" id="add" action="/upload" method="post" enctype="multipart/form-data">
             <div onclick={e=>e.stopPropagation()} class="static px-8 pt-6 pb-8 mb-4 bg-gray-900 border border-gray-800 rounded shadow md:flex flex-wrap">
-              <div class="text-gray-300 opacity-75 absolute top-0 right-0 bg-gray-800 cursor-pointer" onclick={actions.toggleAdd}>
+              <div class="text-gray-300 opacity-75 absolute top-0 right-0 bg-gray-800 cursor-pointer" onclick={actions.toggleAssign}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path fill="currentcolor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
                 </svg>

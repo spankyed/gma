@@ -8,26 +8,30 @@
 @import "./node_modules/tailwindcss/utilities";
 //@import "./custom-utilities.css";
 
+.w-collection{
+  width: 210px !important;
+}
+
 .todo-item {
-    transition: 0.2s ease-in-out;
-    @apply m-0 p-4 text-gray-100 flex border-l-4 cursor-pointer mb-1;
-  
-    &.active {
-      @apply border-orange-500;
-    }
-    &.completed {
-      @apply border-green-400 text-gray-600;
-    }
+  transition: 0.2s ease-in-out;
+  @apply border-l-4;
+
+  &.active {
+    @apply border-orange-500;
   }
-  
-  .todo-item:hover {
-    @apply px-5;
+  &.completed {
+    @apply border-green-400 text-gray-600;
   }
+}
   
+.todo-item:hover {
+  @apply ml-5;
+}
+
 
 .modal-active {
-    overflow-x: hidden;
-    overflow-y: visible !important;
+  overflow-x: hidden;
+  overflow-y: visible !important;
 }
 .opac {
     background:rgba(0,0,0,0.5);
@@ -63,13 +67,13 @@
     width: 45%;
 }
 .title {
-    font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-  }
-  
+  font: 84px 'Arial Narrow', sans-serif;/* I picked this font because it's the closest looking 'web safe' font http://cssfontstack.com/ */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
  /**
 .btn {
     @apply bg-teal-700 text-white text-sm border-none rounded font-bold p-3 mt-2;
