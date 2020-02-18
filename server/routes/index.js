@@ -1,8 +1,10 @@
+var router = require('express').Router();
+var Database = require('../functions/database');
 
-/*
- * GET home page.
- */
+var productsController = require('./products')(Database);
+var collectionsController = require('./collections')(Database);
 
-exports.index = function(req, res){
-  res.render('index.html', { title: 'Dobbers Inc.' });
-};
+router.use('/collections', collectionsController)  
+router.use('/products', productsController)  
+
+module.exports = router;

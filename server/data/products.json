@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "name": "New Product",
+      "items": []
+    },
+    {
+      "name": "New Product",
+      "items": []
+    },
+    {
+      "image": "uploads/product_image",
+      "description": "asd",
+      "price": "asd",
+      "quantity": "asd",
+      "size": "asd",
+      "collection": "Dresses"
+    },
+    {
+      "image": "uploads/product_image",
+      "description": "asd",
+      "price": "asd",
+      "quantity": "add",
+      "size": "dd",
+      "collection": "Dresses"
+    },
+    {
+      "image": "uploads/proofincome.png",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses"
+    },
+    {
+      "created": "1581916903720",
+      "image": "uploads/proofincome.png",
+      "description": "ahh",
+      "price": "ahh",
+      "quantity": "ahh",
+      "size": "ahh",
+      "collection": "Dresses"
+    },
+    {
+      "created": 1581963358990,
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "sa",
+      "quantity": "sa",
+      "size": "sa",
+      "collection": "Dresses"
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "asd",
+      "price": "ds",
+      "quantity": "ds",
+      "size": "ds",
+      "collection": "Dresses",
+      "created": 1581963385896
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "asd",
+      "price": "ds",
+      "quantity": "ds",
+      "size": "ds",
+      "collection": "Dresses",
+      "created": 1581963454495
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581964249967
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581964289629
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581964521380
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581964562860
+    },
+    {
+      "image": "uploads/id.jpg",
+      "description": "as",
+      "price": "as",
+      "quantity": "as",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581964582185
+    },
+    {
+      "file": "undefined",
+      "image": "",
+      "description": "gfd",
+      "price": "",
+      "quantity": "sa",
+      "size": "as",
+      "collection": "Dresses",
+      "created": 1581984580696
+    },
+    {
+      "file": "undefined",
+      "image": "",
+      "description": "asd",
+      "price": "",
+      "quantity": "as",
+      "size": "ds",
+      "collection": "Dresses",
+      "created": 1581988938591
+    }
+  ],
+  "user": {},
+  "count": 0
+}

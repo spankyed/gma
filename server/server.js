@@ -1,54 +1,31 @@
 require('dotenv').config()
-let cfenv = require('cfenv')
-let bodyParser = require('body-parser')
-let express = require('express')
-var multer  = require('multer')
-
-let Database = require('./functions/database');
-let db = new Database()
-
-let app = express()
-//routes = require('./routes'),
-//user = require('./routes/user'),
+let cfenv = require('cfenv'),
+bodyParser = require('body-parser'),
+express = require('express'),
 http = require('http'),
 path = require('path'),
-fs = require('fs');
+//fs = require('fs'),
 
+app = express();
 app.use(bodyParser.urlencoded({ extended: true }));// Parse POST bodies
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+//Routes
+var indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
-var upload = multer({ dest: 'uploads/' })
-app.post('/products/upload', upload.single('file'), function (req, res, next) {
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any
-  //var resp = await conversation.handleIncoming(req.body, 'mock-api')
 
-  var form = req.body
-  /*
-  for (let field in form) {
-    if (field == "") delete form.field
-    console.log('deleted', form)
-  }*/
-  console.log("saving image")
-  form.image = 'uploads/' + req.file.originalname;
-  db.saveImage(req.file)
-  //console.log(db.getProducts())
-  console.log(form)
-  db.addProduct(form)//.then((e) => console.log('State has been saved',e))
-
-  res.status(200).send({text:"hello world"})
-
-}, function (error, response) { // is this ever reached?
-  if (error) {
-    return res.send(error);
-  } else {
-    console.log('Session: ', response)
-    return res.send(response);
+/*app._router.stack.forEach(function(r){
+  if (r.handle && r.handle.stack){
+    //console.log(Object.keys(r.handle.stack[0].handle.stack))
+    //console.log(r.handle.stack[0].handle.stack[0].route)
+    routes = r.handle.stack[0].handle.stack[0]
+    routes.forEach((r)=>{
+      console.log(r.route)
+    })
   }
-});
-
+})*/
 
 // Start the server
 app.listen(cfenv.getAppEnv().port, '0.0.0.0', function () {
