@@ -9,7 +9,7 @@ export default {
       toggle: (evt) => state => ({ navToggle: !state.navToggle }),
     },
     view: (state, actions) => ({path}) => {
-        let color = [{ path: '/', color: 'yellow'},
+        let currentColor = [{ path: '/', color: 'yellow'},
                      { path: '/messages', color: 'red'},
                      { path: '/tasks', color: 'green'},
                      { path: '/products', color: 'pink'},
@@ -21,9 +21,9 @@ export default {
                         <div class="w-full md:flex md:items-center lg:items-base">
                             <span class="flex md:inline px-8 md:px-0 md:w-64">
                                 <div class="w-5/6 md:w-full pull-right pl-4 md:pr-0">
-                                    <h1 class={`text-${color}-600 font-black text-2xl inline-block`}>Administration</h1>
-                                    <i class={`text-${color}-600 fas fa-user-cog pr-0 md:pr-1`}></i>
-                                    {/* <h1 class={`text-${color}-600 font-black text-3xl inline-block`}>Panel</h1> */}
+                                    <h1 class={`text-${currentColor}-600 font-black text-2xl inline-block`}>Administration</h1>
+                                    <i class={`text-${currentColor}-600 fas fa-user-cog pr-0 md:pr-1`}></i>
+                                    {/* <h1 class={`text-${currentColor}-600 font-black text-3xl inline-block`}>Panel</h1> */}
                                 </div>
                                 <div class="md:hidden w-1/6 flex-auto relative inline-block">
                                     {/* Nav Toggle */}
@@ -68,7 +68,7 @@ export default {
                 </nav>
 
                 {/* colored bar under nav */}
-                <div class={`relative w-full bg-${color}-700 h-1 pb-3 text-xl text-white text-center`}>
+                <div class={`relative w-full bg-${currentColor}-700 h-1 pb-3 text-xl text-white text-center`}>
                  </div>
             </div>
             

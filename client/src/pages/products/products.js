@@ -16,9 +16,9 @@ export default initial => ({
   view: (state, actions) => ({match}) => {
     const AddModal = Add.view
     return (     
-      <div class={`${state.show && "modal-active h-full"} text-gray-400 bg-black-alt w-full pt-16 justify-center`}>
+      <div class={`${state.showAdd && "modal-active h-full"} text-gray-400 bg-black-alt w-full pt-16 justify-center`}>
         {
-          (state.show && <AddModal state={state} actions={actions}/>)
+          (state.showAdd && <AddModal state={state} actions={actions}/>)
         }
           <div class="flex w-full">
             <div class="w-collection border border-gray-800 bg-gray-900">
@@ -53,14 +53,14 @@ export default initial => ({
                 <div class="md:flex-grow w-2/5 bg-gray-700">
                   <input class="appearance-none block w-full h-full text-white bg-black-alt px-4 shadow-inner outline-none" id="search" type="text" placeholder="Search"></input>
                 </div>
-                <div class="md:flex-grow-0 w-3/5 ">
-                  <button class="float-right bg-green-700 hover:bg-green-900 text-white font-normal py-2 px-4" onclick={actions.toggleAdd}>
+                <div class="md:flex-grow-0 inline w-3/5">
+                  <button class="float-right bg-pink-700 hover:bg-pink-900 text-white font-normal py-2 px-4" onclick={actions.toggleAdd}>
                     <span class="hidden md:inline-block">Publish</span>
-                    <svg class="text-white fill-current inline -mt-1 ml-2" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15L17 7 15 7 15 15 7 15 7 17 15 17 15 25 17 25 17 17 25 17 25 15 17 15z"></path></svg>
+                    <i fill="currentcolor" class="fas fa-upload ml-1 text-gray-800"></i>
                   </button>
-                  <button class="float-right bg-pink-700 hover:bg-pink-900 text-white font-normal py-2 px-3" onclick={actions.toggleAdd}>
+                  <button class="float-right bg-green-700 hover:bg-green-900 text-white font-normal py-2 px-3" onclick={actions.toggleAdd}>
                     <span class="hidden md:inline-block">Add</span>
-                    <svg class="text-white fill-current inline -mt-1 ml-2" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 15L17 7 15 7 15 15 7 15 7 17 15 17 15 25 17 25 17 17 25 17 25 15 17 15z"></path></svg>
+                    <i fill="currentcolor" class="fas fa-plus ml-1 text-gray-800"></i>
                   </button>
                 </div>
               </div>
