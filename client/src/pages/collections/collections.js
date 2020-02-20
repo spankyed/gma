@@ -7,12 +7,12 @@ import  fetch  from "../../functions/fetch"
 export default initial => ({
   state: {
     showActions: false,
-    collections: [],//initial,
+    collections: initial,//initial,
     ...Add.state,
     ...Assign.state
   },
   actions: {
-    getCollections: _ => state => fetch.getCollections()().then(console.log('hi')),
+    getCollections: _ => (state,actions) => fetch.getCollections().then(actions.setCollections),
     setCollections: res => ({collections: res}),
     delete: (evt) => state => ({ cat: 'meow' }),
     view: (evt) => state => ({ cat: 'meow' }),
@@ -24,9 +24,8 @@ export default initial => ({
     const AddModal = Add.view
     const AssignModal = Assign.view
 
-
     return (     
-      <div oncreate={actions.getCollections} class={`${state.showAdd && "modal-active"} max-w-6xl w-full mx-auto h-screen md:px-5 pt-16 justify-center overflow-x-auto`}>
+      <div class={`${state.showAdd && "modal-active"} max-w-6xl w-full mx-auto h-screen md:px-5 pt-16 justify-center overflow-x-auto`}>
         {
           (state.showAdd && <AddModal state={state} actions={actions}/>)
         }
@@ -47,7 +46,7 @@ export default initial => ({
                     </button>
                 </div>
             </div>
-            <table class="min-w-full leading-normal text-gray-100">
+            <table oncreate={actions.getCollections} class="min-w-full leading-normal text-gray-100">
                 <thead>
                     <tr>
                         <th
@@ -74,6 +73,7 @@ export default initial => ({
                 </thead>
                 <tbody>      
                 {
+                
                 state.collections.map((collection, index) => (
                     <tr>
                         <td class="px-4 py-5 border-b border-gray-800">

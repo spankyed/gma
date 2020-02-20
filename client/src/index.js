@@ -1,15 +1,15 @@
 import { h , app } from 'hyperapp'
 import { location, Route,  Switch, Link } from "@hyperapp/router"
-import './style.scss'
 
+import './style.scss'
+import  data  from './data'
+import  Alert  from './components/alert'
 import  Nav  from './pages/nav'
 import  Dash  from './pages/dash'
 import  Tasks  from './pages/tasks/tasks'
 import  Messages  from './pages/messages/messages'
 import  Products  from './pages/products/products'
 import  Collections  from './pages/collections/collections'
-
-import  data  from './data'
 
 const messages = Messages(data.messages)
 const tasks = Tasks(data.tasks) 
@@ -19,6 +19,7 @@ const collections = Collections(data.collections)
 const state = {
   location: location.state, 
   nav: Nav.state,
+  alert: Alert.state,
   messages: messages.state,
   tasks: tasks.state,
   products: products.state,
@@ -28,6 +29,7 @@ const state = {
 const actions = {
   location: location.actions,
   nav: Nav.actions,
+  alert: Alert.actions,
   messages: messages.actions,
   tasks: tasks.actions,
   products: products.actions,
@@ -36,6 +38,7 @@ const actions = {
 
 const view = ( state, actions ) => {
   const Navbar = Nav.view(state.nav, actions.nav)
+  const AlertView = Alert.view(state.alert, actions.alert)
   const index = {
     messages: messages.view(state.messages, actions.messages),
     tasks: tasks.view(state.tasks, actions.tasks),
@@ -55,6 +58,7 @@ const view = ( state, actions ) => {
         {/* <Route parent path="/products/?collection_id" render={ index.products } />  */}
         <Route parent path="/collections" render={ index.collections } />       
       </Switch>
+      <AlertView  path={ state.location.pathname }></AlertView>
     </div>
   )
 }

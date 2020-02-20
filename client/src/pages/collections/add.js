@@ -1,5 +1,5 @@
 import { h } from 'hyperapp';
-import { Link, Route } from "@hyperapp/router"
+import  Alert  from '../../components/alert'
 
 export default {
   state: {
@@ -11,10 +11,12 @@ export default {
     toggleAdd: _ => state => ({showAdd: !state.showAdd}),
     toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
     toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
-    input: value => value 
+    input: value => value,
+    ...Alert.actions
   },
   view: ({state, actions}) =>_=> {
-    
+    console.log(actions)
+    actions.alert("wasuhhh")
     async function submit(){
       state.form = new FormData();
       /*
@@ -35,13 +37,16 @@ export default {
   
       let result = response.json();
       console.log(result);
-
+      alert('gotti gotti')
+      setTimeout(()=>{actions.toggleAdd},500)
     }
 
     return (
-      <div onclick={actions.toggleAdd} class="opac absolute w-full h-full top-0 left-0 pt-20 justify-center" style="z-index:9000;">
+      <div class="opac absolute w-full h-full top-0 left-0 pt-20 justify-center" style="z-index:9000;">
+        {/* onclick={actions.toggleAdd} causes input click */}
         <div class="w-full flex mx-auto text-gray-800 leading-normal max-w-6xl" >
           <form  class="w-full relative" name="add" id="add" action="/add" method="post" enctype="multipart/form-data">
+            
             <div onclick={e=>e.stopPropagation()} class=" mx-auto static px-6 pt-4 mb-4 bg-gray-900 border border-gray-800 rounded shadow md:flex flex-wrap">
               <div class="text-gray-300 opacity-75 absolute top-0 right-0 bg-gray-800 cursor-pointer" onclick={actions.toggleAdd}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
