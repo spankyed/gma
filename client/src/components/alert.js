@@ -2,7 +2,7 @@ import { h } from 'hyperapp'
 
 export default {
     state: {
-      showAlert: true,
+      showAlert: false,
       message: 'Heads Up!',
       color: '',
     },
@@ -11,16 +11,14 @@ export default {
       remove: state => ({ showAlert: false }) 
     },
     view: (state, actions) => ({path}) => {
+        //console.log('indisbih',state.showAlert)
         setTimeout(()=>{actions.remove},1000)
-        /*let currentColor = [{ path: '/', color: 'yellow'},
-                     { path: '/messages', color: 'red'},
-                     { path: '/tasks', color: 'green'},
-                     { path: '/products', color: 'pink'},
-                     { path: '/collections', color: 'blue'}].filter(route => route.path == path)[0].color*/
+                     
         return (       
             <div>
                 { (
                     state.showAlert && 
+                    (
                     <div class="alert-footer w-full fixed bottom-0" style="z-index:9009">
                         <div class="flex  items-center justify-between bg-green-400 w-full shadow">
                             <div class="w-16 bg-green">
@@ -34,12 +32,14 @@ export default {
                                 </span>
                             </div>
                             <label class="close cursor-pointer mr-6" title="close" for="footeralert">
-                                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                <svg  onclick={actions.remove} class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                                 <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
                                 </svg>
                             </label>
                         </div>
                     </div> 
+                    )
+
                 )
                 }
             </div> 

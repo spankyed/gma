@@ -1,4 +1,5 @@
 var multer  = require('multer')
+//var upload = multer({ dest: 'server/uploads/' }) careful where you run 'nodemon server'
 var upload = multer({ dest: 'uploads/' })
 
 module.exports = function (db){
@@ -10,14 +11,13 @@ module.exports = function (db){
       form.image = 'uploads/' + req.file.originalname;
       db.saveImage(req.file)
     }
-    var newProduct = await db.addProduct(form)
+    var products = await db.addProduct(form)
     // update collection's products count
 
     res.json({
       success: true,
-      mess: 'Product added to database',
-      body: req.body,
-      product: newProduct
+      message: 'Product added to database',
+      products: products
 
   });
   }

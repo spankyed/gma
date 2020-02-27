@@ -1,5 +1,4 @@
 import { h } from 'hyperapp';
-import  Alert  from '../../components/alert'
 
 export default {
   state: {
@@ -11,19 +10,12 @@ export default {
     toggleAdd: _ => state => ({showAdd: !state.showAdd}),
     toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
     toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
-    input: value => value,
-    ...Alert.actions
+    input: value => value
   },
-  view: ({state, actions}) =>_=> {
-    console.log(actions)
-    actions.alert("wasuhhh")
+  view: ({state, actions, alert}) =>_=> {
+
     async function submit(){
       state.form = new FormData();
-      /*
-      var elements = document.forms["add"].elements;
-      for (var i=0; i < elements.length-2; i++){ //-2 for buttons
-        state.form.append(elements[i].id, elements[i].value)
-      }*/
 
       //state.form.append('collection', state.collection)
       for ( var key in state.collection ) {
@@ -33,12 +25,14 @@ export default {
       let response = await fetch('/collections/add', {
         method: 'POST',
         body: state.form
+      });      
+
+      let result = response.json().then( response => {
+        actions.setCollections(response.collections)
+        alert.alert(response.message)
+        //setTimeout(()=>{actions.toggleAdd},500)
       });
-  
-      let result = response.json();
-      console.log(result);
-      alert('gotti gotti')
-      setTimeout(()=>{actions.toggleAdd},500)
+      
     }
 
     return (

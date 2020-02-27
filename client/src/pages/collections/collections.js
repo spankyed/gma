@@ -20,14 +20,14 @@ export default initial => ({
     ...Add.actions,
     ...Assign.actions,
   },
-  view: (state, actions) => ({match}) => {
+  view: (state, actions) => ({match, alert}) => {
     const AddModal = Add.view
     const AssignModal = Assign.view
 
     return (     
       <div class={`${state.showAdd && "modal-active"} max-w-6xl w-full mx-auto h-screen md:px-5 pt-16 justify-center overflow-x-auto`}>
         {
-          (state.showAdd && <AddModal state={state} actions={actions}/>)
+          (state.showAdd && <AddModal state={state} actions={actions} alert={alert}/>)
         }
         {
           (state.showAssign && <AssignModal state={state} actions={actions}/>)
@@ -46,7 +46,8 @@ export default initial => ({
                     </button>
                 </div>
             </div>
-            <table oncreate={actions.getCollections} class="min-w-full leading-normal text-gray-100">
+            {/* oncreate={actions.getCollections} */}
+            <table  class="min-w-full leading-normal text-gray-100">
                 <thead>
                     <tr>
                         <th

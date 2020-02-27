@@ -1,5 +1,4 @@
 const getRequest = async url => {
-    console.log('lesgoo')
   return await fetch(url).then((response) => {
     //response.json().then(f=>console.log('ffs',f))
     return response.json();

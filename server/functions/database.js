@@ -5,10 +5,12 @@ FileAsync = require('lowdb/adapters/FileAsync'),
 low = require('lowdb');
 //shortId = require('shortid');
 
+//const data_dir = 'server/data',
 const data_dir = 'data',
+
 productsPath = path.join(data_dir, 'products.json');
 collectionsPath = path.join(data_dir, 'collections.json');
-
+console.log(productsPath)
 exports.ensureDB = function (path) {
     let dbAdapter = new FileAsync(path);
     //{ products: [], user: {}, count: 0 }
@@ -47,9 +49,9 @@ exports.addCollection = function (obj) {
             //id: shortId.generate(),
             ...obj
         };
-        return collections.get('collections').push(collection).write().then(function (c) {
-            console.log('added',collection)
-            return collection;
+        return collections.get('collections').push(collection).write().then(function (collections) {
+            console.log('collection added /n', collections)
+            return collections;
         })
     });
 };

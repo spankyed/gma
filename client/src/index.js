@@ -56,13 +56,24 @@ const view = ( state, actions ) => {
         <Route parent path="/tasks" render={ index.tasks } />    
         <Route parent path="/products" render={ index.products } />  
         {/* <Route parent path="/products/?collection_id" render={ index.products } />  */}
-        <Route parent path="/collections" render={ index.collections } />       
+        <Route parent path="/collections" render={ () => <index.collections alert={actions.alert}></index.collections> } />       
       </Switch>
-      <AlertView  path={ state.location.pathname }></AlertView>
+      <AlertView path={ state.location.pathname }></AlertView>
     </div>
   )
 }
 
 const main = app(state, actions, view, document.body)
-
 const unsubscribe = location.subscribe(main.location)
+
+
+// https://github.com/jorgebucaran/hyperapp/issues/331
+/*const events = {
+  dispatch: (state, actions, { action, data }) => {
+    return actions[action]
+      ? actions[action](data)
+      : null;
+  }
+}*/
+//window.alert = main.alert
+//console.log('alert',alert)
