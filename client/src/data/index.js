@@ -1,21 +1,13 @@
 // data file
-const randString = () =>
-  Math.random()
-    .toString(36)
-    .substring(3, 9)
-
-const themes = [
-  'green',
-  'teal',
-  'blue',
-  'indigo',
-  'purple',
-  'orange',
-  'yellow',
-  'grey',
-  'red',
-  'pink'
-]
+const constants = {
+  pathColors: [
+    { path: '/', color: 'yellow'},
+    { path: '/messages', color: 'red'},
+    { path: '/tasks', color: 'green'},
+    { path: '/products', color: 'pink'},
+    { path: '/collections', color: 'blue'}
+  ]
+}
 
 const products = [
   {
@@ -50,7 +42,7 @@ const collections = [
     "created": "June 12, 2019"
   },
   {
-    "id": 1,
+    "id": 2,
     "title": "Silk Dress",
     "collection": ["Dress", "Women"],
     "image": "https://res.cloudinary.com/duua3lsu1/image/upload/v1557590908/blog/task-grid-thumbnail.png",
@@ -58,8 +50,11 @@ const collections = [
   }
 ]
 
+//const randString = () => Math.random().toString(36).substring(3, 9)
+//counters: [...new Array(10)].map((item, index) => ({ id: randString(), count: 0, theme: themes[index % 10] }))
+
 export default {
+  constants: constants,
   collections: collections,
-  products: products,
-  counters: [...new Array(10)].map((item, index) => ({ id: randString(), count: 0, theme: themes[index % 10] }))
+  products: products
 }

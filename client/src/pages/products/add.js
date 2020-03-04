@@ -16,7 +16,12 @@ export default {
     
     async function submit(){
       state.form = new FormData();
-      var file = document.getElementById('image').files[0];
+      var files = document.getElementById('image').files,
+          file;
+      if(files.length > 0){
+        files = file[0]
+        console.log(file)
+      }
 
       state.form.append('file', file);
       var elements = document.forms["add"].elements;
@@ -24,13 +29,14 @@ export default {
         state.form.append(elements[i].id, elements[i].value)
       }
 
+      /*
       let response = await fetch('/products/add', {
         method: 'POST',
         body: state.form
       });
   
       let result = await response.json();
-      console.log(result);
+      console.log(result);*/
     }
 
     return (
@@ -64,13 +70,13 @@ export default {
                     <label class="block tracking-wide text-gray-300 text-sm font-bold mb-2" for="price">
                       Price
                     </label>
-                    <input id="price" name="price" type="text" placeholder="Price" class="appearance-none block w-full bg-gray-600 py-3 px-4"></input>
+                    <input id="price" name="price" type="number" placeholder="Price" class="appearance-none block w-full bg-gray-600 py-3 px-4"></input>
                   </div>
                   <div class="md:w-1/3 px-2">
                     <label class="block tracking-wide text-gray-300 text-sm font-bold mb-2" for="quantity">
                       Quantity
                     </label>
-                    <input id="quantity" name="quantity" type="text" placeholder="Quantity" class="appearance-none block w-full bg-gray-600 py-3 px-4"></input>
+                    <input id="quantity" name="quantity" type="number" placeholder="Quantity" class="appearance-none block w-full bg-gray-600 py-3 px-4"></input>
                   </div>
                   <div class="md:w-1/3 px-2">
                     <label class="block tracking-wide text-gray-400 text-sm font-bold mb-2" for="size">

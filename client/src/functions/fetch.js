@@ -18,5 +18,6 @@ const postRequest = async (url,data) => {
 
 export default {
   getCollections:  _ => getRequest('/collections/list'),
+  getFilteredProductsByPage:  (query,page) => getRequest('/products/pagelist' + `?filter=${query}&page=${page}`),
   //getQuery: query => getRequest(API_URL + `?filter=${query}&type=tag`)
 }

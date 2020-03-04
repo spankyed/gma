@@ -4,16 +4,15 @@ export default {
     state: {
       showAlert: false,
       message: 'Heads Up!',
-      color: '',
+      status: 'success',
     },
     actions: {
-      alert: (message) => state => ({ showAlert: true, message: message }),
+      show: ({message, status}) => state => ({ showAlert: true, message: message, status: status, }),
       remove: state => ({ showAlert: false }) 
     },
     view: (state, actions) => ({path}) => {
-        //console.log('indisbih',state.showAlert)
-        setTimeout(()=>{actions.remove},1000)
-                     
+        let color = {success: 'green', error: 'red', warning: 'yellow'}[state.status]
+        console.log('indisbih',color)            
         return (       
             <div>
                 { (

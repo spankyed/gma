@@ -4,7 +4,7 @@ import { location, Route,  Switch, Link } from "@hyperapp/router"
 import './style.scss'
 import  data  from './data'
 import  Alert  from './components/alert'
-import  Nav  from './pages/nav'
+import  Nav  from './components/nav'
 import  Dash  from './pages/dash'
 import  Tasks  from './pages/tasks/tasks'
 import  Messages  from './pages/messages/messages'
@@ -56,7 +56,7 @@ const view = ( state, actions ) => {
         <Route parent path="/tasks" render={ index.tasks } />    
         <Route parent path="/products" render={ index.products } />  
         {/* <Route parent path="/products/?collection_id" render={ index.products } />  */}
-        <Route parent path="/collections" render={ () => <index.collections alert={actions.alert}></index.collections> } />       
+        <Route parent path="/collections" render={ _ => <index.collections alert={actions.alert}/>} />       
       </Switch>
       <AlertView path={ state.location.pathname }></AlertView>
     </div>
@@ -65,15 +65,3 @@ const view = ( state, actions ) => {
 
 const main = app(state, actions, view, document.body)
 const unsubscribe = location.subscribe(main.location)
-
-
-// https://github.com/jorgebucaran/hyperapp/issues/331
-/*const events = {
-  dispatch: (state, actions, { action, data }) => {
-    return actions[action]
-      ? actions[action](data)
-      : null;
-  }
-}*/
-//window.alert = main.alert
-//console.log('alert',alert)

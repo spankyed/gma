@@ -1,15 +1,8 @@
 {
   "products": [
     {
-      "name": "New Product",
-      "items": []
-    },
-    {
-      "name": "New Product",
-      "items": []
-    },
-    {
-      "image": "uploads/product_image",
+	  "id": 1,
+      "image": "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
       "description": "asd",
       "price": "asd",
       "quantity": "asd",
@@ -17,6 +10,7 @@
       "collection": "Dresses"
     },
     {
+	  "id": 2,
       "image": "uploads/product_image",
       "description": "asd",
       "price": "asd",
@@ -25,6 +19,7 @@
       "collection": "Dresses"
     },
     {
+	  "id": 3,
       "image": "uploads/proofincome.png",
       "description": "as",
       "price": "as",
@@ -33,6 +28,7 @@
       "collection": "Dresses"
     },
     {
+	  "id": 4,
       "created": "1581916903720",
       "image": "uploads/proofincome.png",
       "description": "ahh",
@@ -42,6 +38,7 @@
       "collection": "Dresses"
     },
     {
+	  "id": 5,
       "created": 1581963358990,
       "image": "uploads/id.jpg",
       "description": "as",
@@ -51,6 +48,7 @@
       "collection": "Dresses"
     },
     {
+	  "id": 6,
       "image": "uploads/id.jpg",
       "description": "asd",
       "price": "ds",
@@ -60,6 +58,7 @@
       "created": 1581963385896
     },
     {
+	  "id": 7,
       "image": "uploads/id.jpg",
       "description": "asd",
       "price": "ds",
@@ -69,6 +68,7 @@
       "created": 1581963454495
     },
     {
+	  "id": 8,
       "image": "uploads/id.jpg",
       "description": "as",
       "price": "as",
@@ -78,6 +78,7 @@
       "created": 1581964249967
     },
     {
+	  "id": 9,
       "image": "uploads/id.jpg",
       "description": "as",
       "price": "as",
@@ -87,6 +88,7 @@
       "created": 1581964289629
     },
     {
+	  "id": 10,
       "image": "uploads/id.jpg",
       "description": "as",
       "price": "as",
@@ -96,6 +98,7 @@
       "created": 1581964521380
     },
     {
+	  "id": 11,
       "image": "uploads/id.jpg",
       "description": "as",
       "price": "as",
@@ -105,6 +108,7 @@
       "created": 1581964562860
     },
     {
+	  "id": 12,
       "image": "uploads/id.jpg",
       "description": "as",
       "price": "as",
@@ -114,6 +118,7 @@
       "created": 1581964582185
     },
     {
+	  "id": 13,
       "file": "undefined",
       "image": "",
       "description": "gfd",
@@ -124,6 +129,7 @@
       "created": 1581984580696
     },
     {
+	  "id": 14,
       "file": "undefined",
       "image": "",
       "description": "asd",

@@ -6,20 +6,20 @@ module.exports = function (db){
   async function add(req, res, next) {
     var form = req.body
     //console.log('form',form)    
-
+    
     try {
       var collections = await db.addCollection(form)
-    } catch (error) {
+    } catch (error) { // catch not tested
       console.error(error)
       res.json({
-        success: false,
+        status: "error",
         message: 'Error Adding Collection',
         collections: collections || undefined
       })
     }
 
     res.json({
-      success: true,
+      status: "success",
       message: 'Collection Successfully Added !',
       collections: collections
     });
@@ -40,7 +40,7 @@ module.exports = function (db){
     //res.json(collections)
     /*res.json({
       success: true,
-      mess: 'Collections successfully retrieved',
+      message: 'Collections successfully retrieved',
       collections: collections
     });*/
   }

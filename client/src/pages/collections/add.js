@@ -1,38 +1,43 @@
 import { h } from 'hyperapp';
+import  validate  from "../../functions/validate"
 
 export default {
   state: {
-    collection: {title: '', status: 0},
+    showAdd: false,
+    collection: {title: '', status: 1},
     form: null,
-    showAdd: false
+    ...validate.state
   },
   actions: {
     toggleAdd: _ => state => ({showAdd: !state.showAdd}),
     toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
     toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
-    input: value => value
+    input: value => value,
+    ...validate.actions
   },
   view: ({state, actions, alert}) =>_=> {
-
+    console.log("1")
     async function submit(){
-      state.form = new FormData();
-
+      var form = new FormData();
       //state.form.append('collection', state.collection)
       for ( var key in state.collection ) {
-        state.form.append(key, state.collection[key]);
+        form.append(key, state.collection[key]);
       }
-      console.log(state.collection)
-      let response = await fetch('/collections/add', {
-        method: 'POST',
-        body: state.form
-      });      
+      console.log(state.form)
+      if(validate.check(state.collection, state, actions)){ //only pass state,actions - use state.form 
+        console.log('isvalid')
+        /*
+        let response = await fetch('/collections/add', {
+          method: 'POST',
+          body: state.form
+        });    
 
-      let result = response.json().then( response => {
-        actions.setCollections(response.collections)
-        alert.alert(response.message)
-        //setTimeout(()=>{actions.toggleAdd},500)
-      });
-      
+        let result = response.json().then( response => {
+          actions.setCollections(response.collections)
+          alert.show(response)
+          //setTimeout(()=>{actions.toggleAdd},500)
+        });*/
+      } else{ console.log('gang',state.errors)}   
     }
 
     return (
@@ -52,8 +57,9 @@ export default {
                   <label class="block tracking-wide text-gray-300 text-sm font-bold mb-2" for="title">
                     Title
                   </label>
-                  <input oninput={e => actions.input({ collection:{...state.collection, title: e.target.value}})} value={state.collection.title} id="title" name="title" class="appearance-none block w-full sm:w-64 lg:w-full bg-gray-600 border border-red-600 py-2 px-4 mb-2" type="text" placeholder="Title"></input>
-                  <p class="text-red-600 text-xs italic">Please provide a collection title.</p>
+                  {/* Title Input */}
+                  <input oninput={e => actions.input({ collection:{...state.collection, title: e.target.value}})} value={state.collection.title} id="title" name="title" class={`${state.errors.title && "border border-red-600"} appearance-none block w-full sm:w-64 lg:w-full bg-gray-600 py-2 px-4 mb-2`} type="text" placeholder="Title"></input>
+                  { (state.errors.title && <p class="text-red-600 text-xs italic">{state.errors.title}</p>)}
                 </div>
                 <div class="w-full sm:w-4/12 sm:px-2">
                   <div class="mt-6 justify-center">
@@ -67,7 +73,7 @@ export default {
                 </div>
                 <div class="flex-grow pr-2 mt-6">
                   <div class="float-right sm:text-center">
-                    {/* add outline to button */}
+                    {/* add active outline to button? */}
                     <button type="button" onclick={actions.toggleAdd} class="mr-2 bg-gray-600 font-semibold border-b-4 border-red-600 bg-red-500 hover:bg-red-600 text-white shadow-md py-2 px-4 inline-flex items-center">
                       <span class="hidden lg:inline mr-2">Cancel</span>
                       <i fill="currentcolor" class="fas fa-times"></i>

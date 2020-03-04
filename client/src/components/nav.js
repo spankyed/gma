@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import { Link, location } from "@hyperapp/router"
+import  data  from '../data'
 
 export default {
     state: {
@@ -9,11 +10,7 @@ export default {
       toggle: (evt) => state => ({ navToggle: !state.navToggle }),
     },
     view: (state, actions) => ({path}) => {
-        let currentColor = [{ path: '/', color: 'yellow'},
-                     { path: '/messages', color: 'red'},
-                     { path: '/tasks', color: 'green'},
-                     { path: '/products', color: 'pink'},
-                     { path: '/collections', color: 'blue'}].filter(route => route.path == path)[0].color
+        let currentColor = data.constants.pathColors.filter(route => route.path == path)[0].color
         return (
             <div class="fixed w-full" style="z-index:9001;">
                 <nav id="header" class="bg-gray-900 relative w-full z-10 top-0 shadow border border-gray-800 ">

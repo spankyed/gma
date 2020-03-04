@@ -4,21 +4,80 @@ import  Add  from "./add"
 import  Assign  from "./assign"
 import  fetch  from "../../functions/fetch"
 
+const Collection = ({collection, actionsToggle, showActions, closeActions}) => {
+
+	var toggle = (evt) => {
+        actionsToggle.show  && (actionsToggle.id == collection.id) ?
+        closeActions() :
+        showActions(collection)
+
+		//$(evt.target).css('outline-color', 'green');
+	};
+	
+	return (
+        <tr>
+            <td class="px-4 py-5 border-b border-gray-800">
+                <p class="whitespace-no-wrap text-lg">{collection.title}</p>
+            </td>
+            <td class="px-4 py-5 border-b border-gray-800">
+                <p class="whitespace-no-wrap">28</p>
+            </td>
+            <td class="hidden sm:table-cell px-5 py-5 border-b border-gray-800">
+                <p class="whitespace-no-wrap">{collection.created}</p>
+            </td>
+            <td class="px-4 py-5 border-b border-gray-800">
+                <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                    <span aria-hidden
+                        class="absolute inset-0 bg-green-200 opacity-75"></span>
+                    <span class="relative">Active</span>
+                </span>
+            </td>
+            <td class=" pl-4 py-5 border-b border-gray-800">
+            <button onclick={toggle} class={`text-sm bg-black-alt ${actionsToggle && 'bg-gray-800'} hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4`}>
+                <i class="fas fa-tools"></i>
+            </button>
+            {
+            (actionsToggle.show && (actionsToggle.id == collection.id)) ?
+            (
+            <span id="actions" class={`absolute inline-block flex flex-col`}>
+                <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                    <i class="fas fa-link"></i>
+                </button>
+                <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </button>
+                <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </span>
+            ) : ""
+            }
+
+        </td>
+    </tr>
+	);
+};
+
 export default initial => ({
   state: {
-    showActions: false,
-    collections: initial,//initial,
+    actionsToggle: { show: false, id: 0 },
+    collections: initial, //initial,
     ...Add.state,
     ...Assign.state
   },
   actions: {
-    getCollections: _ => (state,actions) => fetch.getCollections().then(actions.setCollections),
-    setCollections: res => ({collections: res}),
-    delete: (evt) => state => ({ cat: 'meow' }),
+    getCollections: _ => (state, actions) => fetch.getCollections().then(actions.setCollections),
+    setAsyncCollections: ({collections}) => ({ collections: collections }),
+    setCollections: collections => ({ collections: collections }),
+    showActions: collection => state => ({ actionsToggle: { show: true, id: collection.id }}),
+    closeActions: _ => state => ({ actionsToggle: { show: false }}),
     view: (evt) => state => ({ cat: 'meow' }),
-    toggleActions: _ => state => ({showActions: !state.showActions}),
+    delete: (evt) => state => ({ cat: 'meow' }),
     ...Add.actions,
-    ...Assign.actions,
+    ...Assign.actions
   },
   view: (state, actions) => ({match, alert}) => {
     const AddModal = Add.view
@@ -30,7 +89,7 @@ export default initial => ({
           (state.showAdd && <AddModal state={state} actions={actions} alert={alert}/>)
         }
         {
-          (state.showAssign && <AssignModal state={state} actions={actions}/>)
+          (state.showAssign && <AssignModal state={state} actions={actions} alert={alert}/>)
         }
         <div class="flex flex-col min-w-full shadow overflow-hidden border border-l border-r border-gray-800 bg-gray-900 text-gray-100">
             <div class="inline-block md:min-w-full w-full xs:mt-0">
@@ -73,53 +132,13 @@ export default initial => ({
                     </tr>
                 </thead>
                 <tbody>      
-                {
-                
+                {             
                 state.collections.map((collection, index) => (
-                    <tr>
-                        <td class="px-4 py-5 border-b border-gray-800">
-                            <p class="whitespace-no-wrap text-lg">{collection.title}</p>
-                        </td>
-                        <td class="px-4 py-5 border-b border-gray-800">
-                            <p class="whitespace-no-wrap">28</p>
-                        </td>
-                        <td class="hidden sm:table-cell px-5 py-5 border-b border-gray-800">
-                            <p class="whitespace-no-wrap">{collection.created}</p>
-                        </td>
-                        <td class="px-4 py-5 border-b border-gray-800">
-                            <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                <span aria-hidden
-                                    class="absolute inset-0 bg-green-200 opacity-75"></span>
-                                <span class="relative">Active</span>
-                            </span>
-                        </td>
-                        <td class=" pl-4 py-5 border-b border-gray-800">
-                        <button onclick={actions.toggleActions} class={`text-sm bg-black-alt ${state.showActions && 'bg-gray-800'} hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4`}>
-                            <i class="fas fa-tools"></i>
-                        </button>
-                        <span id="actions" class={`${!state.showActions && 'hidden'} absolute inline-block flex flex-col`}>
-                            <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                            <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
-                                <i class="fas fa-tasks"></i>
-                            </button>
-                            <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
-                                <i class="fas fa-link"></i>
-                            </button>
-                            <button class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </span>
-                        </td>
-                    </tr>
+                    <Collection  collection={collection} actionsToggle={state.actionsToggle} showActions={actions.showActions} closeActions={actions.closeActions}/>
                 ))
-                }
-
-                    
+                }           
                 </tbody>
             </table>
-
         </div>
     </div>
       ) 

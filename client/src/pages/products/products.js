@@ -84,7 +84,7 @@ export default initial => ({
                     <div class="font-semibold uppercase tracking-wide">
                       <a href="url" class="hover:underline"> Fourth of July Baby Outfit </a>
                     </div>
-                    <div class="float-right font-medium mb-2 inline-block">$<span class="tracking-wider text-pink-300 bg-black-alt border border-gray-700 ml-1 px-2"> 26.99</span> </div>
+                    <div class="float-right font-medium mb-2 inline-block">$<span class="tracking-wider text-pink-300 bg-black-alt border border-gray-700 ml-1 px-2 cursor-default"> 26.99</span> </div>
                   </div>  
                 </div>
 
