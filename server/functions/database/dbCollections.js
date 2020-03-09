@@ -22,7 +22,7 @@ exports.addCollection = function (obj) {
 exports.getCollections = function (obj) {
     return this.readJson(collectionsPath).then(function (collectionsFile) {
         console.log(collectionsFile.get('collections').value())
-        return collections.get('collections').value()
+        return collectionsFile.get('collections').value()
     });
 };
  
@@ -37,8 +37,8 @@ exports.getCollectionById = function (id) {
 
 // delete a collection by collectionId
 exports.deleteCollectionById = function (obj) {
-    return this.readJsons(collectionsPath).then(function (db) { 
-        return db.get('collections').remove({ 
+    return this.readJsons(collectionsPath).then(function (collectionsFile) { 
+        return collectionsFile.get('collections').remove({ 
             id: obj.collectionId 
         }).write(); 
     });

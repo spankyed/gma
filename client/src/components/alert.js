@@ -12,7 +12,7 @@ export default {
     },
     view: (state, actions) => ({path}) => {
         let color = {success: 'green', error: 'red', warning: 'yellow'}[state.status]
-        console.log('indisbih',color)            
+         
         return (       
             <div>
                 { (

@@ -1,7 +1,6 @@
 var constraints = {
-  title: {
-    present: true,
-  },
+  title: { present: true },
+  selected: { present: true },
   password: {
     presence: true,
     length: {
@@ -21,13 +20,11 @@ var constraints = {
   }
 };
 
-var submitAttempted = false;
-const check = (form, state, actions) => {
-  //submitAttempted = submitAttempt ? submitAttempt :submitAttempted
-  //if(!submitAttempted) return false //dont show errors until after first submit attempt
-
+const check = (form, state, actions, submitAttempt) => {
+  if (!(state.submitAttempted || submitAttempt)) return false // dont show errors until after first submit attempt
+  if (submitAttempt) actions.setAttempted()   
+  for(let error in state.errors) actions.deleteError(error) // clear errors
   var isValid = true
-
   for (let field in form){
     let constraint = constraints[field]
     if(constraint){
@@ -41,15 +38,11 @@ const check = (form, state, actions) => {
       if (isValid && state.errors[field]) actions.deleteError(field)
     }
   }
-
   function throwError(field, message){
     isValid = false
     actions.addError({field: field, message:message})
   }
-  function matchPattern(field,value){
-    return constraints[field].pattern.match.test(value)
-  }
-
+  function matchPattern(field,value){ return constraints[field].pattern.match.test(value) }
   return isValid
 }
 
@@ -58,11 +51,14 @@ const actions = {
   deleteError: field => state => {
     delete state.errors[field]
     return {...state.errors}
-  }
+  },
+  setAttempted: _ => state => ({ submitAttempted: true })
 }
 const state = {
+  submitAttempted: false,
   errors: {} // list of errors set after check
 }
+
 export default {
   check: check,
   actions: actions,

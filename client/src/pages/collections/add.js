@@ -1,22 +1,28 @@
 import { h } from 'hyperapp';
 import  validate  from "../../functions/validate"
 
-export default {
-  state: {
-    showAdd: false,
-    collection: {title: '', status: 1},
-    form: null,
-    ...validate.state
-  },
+let initial = {
+  showAdd: false,
+  collectiont: { id: '', title: '', status: 1},
+  form: null,
+  ...validate.state
+}
+
+export default (initial => ({
+  state: initial,
   actions: {
-    toggleAdd: _ => state => ({showAdd: !state.showAdd}),
+    toggleAdd: _ => state => ({...initial, showAdd: !state.showAdd}),
     toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
     toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
     input: value => value,
     ...validate.actions
   },
   view: ({state, actions, alert}) =>_=> {
-    console.log("1")
+    let onInput = (e) => {
+      let {collection} = actions.input({ collection:{...state.collection, title: e.target.value}})
+      if(state.submitAttempted) validate.check(collection, state, actions)
+    }
+
     async function submit(){
       var form = new FormData();
       //state.form.append('collection', state.collection)
@@ -24,7 +30,7 @@ export default {
         form.append(key, state.collection[key]);
       }
       console.log(state.form)
-      if(validate.check(state.collection, state, actions)){ //only pass state,actions - use state.form 
+      if(validate.check(state.collection, state, actions, true)){ 
         console.log('isvalid')
         /*
         let response = await fetch('/collections/add', {
@@ -37,7 +43,7 @@ export default {
           alert.show(response)
           //setTimeout(()=>{actions.toggleAdd},500)
         });*/
-      } else{ console.log('gang',state.errors)}   
+      } else { console.log('gang',state.errors) }   
     }
 
     return (
@@ -58,7 +64,7 @@ export default {
                     Title
                   </label>
                   {/* Title Input */}
-                  <input oninput={e => actions.input({ collection:{...state.collection, title: e.target.value}})} value={state.collection.title} id="title" name="title" class={`${state.errors.title && "border border-red-600"} appearance-none block w-full sm:w-64 lg:w-full bg-gray-600 py-2 px-4 mb-2`} type="text" placeholder="Title"></input>
+                  <input oninput={onInput} value={state.collection.title} id="title" name="title" class={`${state.errors.title && "border border-red-600"} appearance-none block w-full sm:w-64 lg:w-full bg-gray-600 py-2 px-4 mb-2 outline-none`} type="text" placeholder="Title"></input>
                   { (state.errors.title && <p class="text-red-600 text-xs italic">{state.errors.title}</p>)}
                 </div>
                 <div class="w-full sm:w-4/12 sm:px-2">
@@ -91,6 +97,6 @@ export default {
       </div>  
       )   
   }
-}  
+}))(initial)  
 
 

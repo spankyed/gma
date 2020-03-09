@@ -38,11 +38,11 @@ module.exports = function (db){
     }
     
     //res.json(collections)
-    /*res.json({
+    res.json({
       success: true,
       message: 'Collections successfully retrieved',
       collections: collections
-    });*/
+    });
   }
   const collections = require('express').Router();
   collections.post('/add', upload.any(), add)  
