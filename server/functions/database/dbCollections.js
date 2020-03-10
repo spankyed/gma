@@ -37,21 +37,31 @@ exports.getCollectionById = function (id) {
 
 // delete a collection by collectionId
 exports.deleteCollectionById = function (obj) {
-    return this.readJsons(collectionsPath).then(function (collectionsFile) { 
+    return this.readJson(collectionsPath).then(function (collectionsFile) { 
         return collectionsFile.get('collections').remove({ 
             id: obj.collectionId 
         }).write(); 
     });
 };
+// delete a collection by collectionId
+exports.editCollection = function (collection) {
+    console.log("collection",collection,collection.id)
+    return this.readJson(collectionsPath).then(function (collectionsFile) { 
+        var dbCollection = collectionsFile
+                            .get('collections')
+                            .find({ id: collection.id }); // ensure typeof id = db.id
+        return dbCollection.assign(collection).write();
+    });
+};
 
 // edit an item by collection and item id
 exports.editCollectionById = function (obj) { 
-    return this.getCollectionById(obj.collectionId).then(function (collection) { 
+    return this.getCollectionById(obj.id).then(function (collection) { 
         var item = collection.get('items').find({
-                id: obj.itemId
+                id: obj.id
             }); 
         // toggle done flag?
-        if (obj.toggleDone) { 
+        if (obj.status == 1) { 
             return item.assign({
                 done: !item.value().done
             }).write(); 

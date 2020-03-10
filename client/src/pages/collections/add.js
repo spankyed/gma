@@ -3,7 +3,7 @@ import  validate  from "../../functions/validate"
 
 let initial = {
   showAdd: false,
-  collectiont: { id: '', title: '', status: 1},
+  collection: { id: null, title: '', status: 1},
   form: null,
   ...validate.state
 }
@@ -11,7 +11,7 @@ let initial = {
 export default (initial => ({
   state: initial,
   actions: {
-    toggleAdd: _ => state => ({...initial, showAdd: !state.showAdd}),
+    toggleAdd: collection => state => ({...initial, showAdd: !state.showAdd, collection: collection || initial.collection}),
     toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
     toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
     input: value => value,
@@ -29,20 +29,20 @@ export default (initial => ({
       for ( var key in state.collection ) {
         form.append(key, state.collection[key]);
       }
-      console.log(state.form)
+      console.log(state.collection)
       if(validate.check(state.collection, state, actions, true)){ 
-        console.log('isvalid')
-        /*
-        let response = await fetch('/collections/add', {
+        let url = state.collection.id ? '/collections/edit' : '/collections/add'
+        let response = await fetch(url, {
           method: 'POST',
-          body: state.form
+          body: form
         });    
 
         let result = response.json().then( response => {
-          actions.setCollections(response.collections)
+          console.log(response.collections)
+          //actions.setCollections(response.collections)
           alert.show(response)
           //setTimeout(()=>{actions.toggleAdd},500)
-        });*/
+        });
       } else { console.log('gang',state.errors) }   
     }
 

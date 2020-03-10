@@ -46,7 +46,7 @@ const Collection = ({collection, actionsToggle, showActions, closeActions, actio
                 <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </button>
-                <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                <button onclick={(e)=>actions.toggleAdd(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
                 <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
@@ -94,7 +94,7 @@ export default initial => ({
         <div class="flex flex-col min-w-full shadow overflow-hidden border border-l border-r border-gray-800 bg-gray-900 text-gray-100">
             <div class="inline-block md:min-w-full w-full xs:mt-0">
                 <div class="float-right text-white border-b border-gray-800 font-normal">
-                    <button onclick={actions.toggleAdd} class="bg-green-700 hover:bg-green-800 py-2 px-3">
+                    <button onclick={(e)=>actions.toggleAdd()} class="bg-green-700 hover:bg-green-800 py-2 px-3">
                         <span class="hidden md:inline-block">Add</span>
                         <i fill="currentcolor" class="fas fa-plus ml-1 text-gray-800"></i>
                     </button>

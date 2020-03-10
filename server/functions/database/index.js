@@ -23,14 +23,14 @@ exports.readJson = function (path) {
 
 exports.addProduct = Products.addProduct
 exports.addCollection = Collections.addCollection
+exports.editProductById = Products.editProductById
+exports.editCollection = Collections.editCollection
+exports.deleteProductById = Products.deleteProductById
+exports.deleteCollectionById = Collections.deleteCollectionById
 exports.getProducts = Products.getProducts
 exports.getCollections = Collections.getCollections
 exports.getProductById = Products.getProductById
 exports.getCollectionById = Collections.getCollectionById
-exports.deleteProductById = Products.deleteProductById
-exports.deleteCollectionById = Collections.deleteCollectionById
-exports.editProductById = Products.editProductById
-exports.editCollectionById = Collections.editCollectionById
 exports.getFilteredProductsByPage = Products.getFilteredProductsByPage
  
 exports.saveImage = function (file){

@@ -5,7 +5,7 @@ import  validate  from "../../functions/validate"
 
 let initial = {
   showAssign: false,
-  collection: { id: undefined, title: '', status: 1 },
+  collection: { id: "1" }, // id must be string to set initial value
   form: null,
   preview: { id: 0, src: "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg" },
   query: '',
@@ -34,7 +34,6 @@ export default (initial => ({
     ...validate.actions
   },
   view: ({state, actions, alert}) =>_=> {
-    console.log(state)
     const query = (e) => { actions.input({ query: e.target.value}); actions.getProducts() } // consider clearing missing products from selected after query
     const preview = (product) => { actions.preview(product); console.log(state.preview)} 
     const getNextPage = (e) => { actions.incrementPage(); actions.getProducts() }
@@ -45,9 +44,9 @@ export default (initial => ({
       let selected = toggleSelect(product)
       if(state.submitAttempted) validate.check(selected, state, actions) // only validate onTrClick after first submit attempt
     }
-    async function submit(){
-      if(validate.check({selected: state.selected}, state, actions, true)){
-        console.log("gang_sht",state.selected,state.errors)
+    async function submit(){  
+      if(validate.check({selected: state.selected, option: state.collection.id}, state, actions, true)){
+        console.log("gang_sht", collection.id)
       }
     }
 
@@ -66,13 +65,15 @@ export default (initial => ({
               <div class="flex flex-wrap h-full md:w-1/2 mx-auto mb-6 md:mb-0 text-right text-gray-700">
                 <div class="w-full flex border-b border-gray-800 py-2 px-4 text-lg">
                   Collection 
-                  <select oncreate={actions.getCollections} value={state.collection.id} class="ml-8 px-4 text-gray-400 bg-gray-600" id="collection">
+                  <select oncreate={actions.getCollections} value={state.collection.id} onchange={(e)=>{actions.input({ collection:{ id: e.target.value }})}} class={`${state.errors.option && "border border-red-600"} ml-8 px-4 text-gray-400 bg-gray-600`} id="collection">
                     {
                       state.collections.map((collection, index) => (
                         <option value={collection.id}>{collection.title}</option>
                       ))
                     }
                   </select>
+                  {(state.errors.option && <p class="px-4 mt-1 text-red-600 text-xs italic">Please select a collection</p>)}
+
                 </div>
                 <div class="w-full h-full md:h-auto ">
                   <div class="w-full h-64  bg-pink-700 relative" style={`background-image: url(${state.preview.src})`}>
@@ -99,7 +100,7 @@ export default (initial => ({
                   </div>
                   <div class="w-full">
                     <table oncreate={()=>fetch.getFilteredProductsByPage('',1).then(actions.setProducts)} class="min-w-full leading-normal text-gray-100">
-                      <tbody class={`${(state.errors.selected )&& "border border-red-600"}`} >
+                      <tbody class={`${(state.errors.selected) && "border border-red-600"}`} >
                       {
                         state.products.map((product, index) => (
                           <tr onclick={(e)=>onTrClick(product)} class={`${(boolSelected(product)) && "bg-blue-800"} border-b ${(state.errors.selected && index==3)? "border-red-600":"border-gray-800"} hover:bg-blue-700`}>
@@ -124,8 +125,7 @@ export default (initial => ({
                     </table>
                     <div class="w-full flex ">
                       <div class="w-1/5 ">
-                      {(state.errors.selected && <p class="text-red-600 text-xs italic mb-1 absolute">Please select a product from the table </p>)}
-
+                        {(state.errors.selected && <p class="text-red-600 text-xs italic mb-1 absolute">Please select a product from the table </p>)}
                         {/* offset w-3/5 */}
                       </div>
                       <div class="w-2/5 flex items-center text-left justify-end">

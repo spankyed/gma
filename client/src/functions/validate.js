@@ -1,5 +1,6 @@
 var constraints = {
   title: { present: true },
+  option: { present: true },
   selected: { present: true },
   password: {
     presence: true,
@@ -30,7 +31,7 @@ const check = (form, state, actions, submitAttempt) => {
     if(constraint){
       let value = form[field]
       if (constraint.present){
-        if (!(value.length > 0)) throwError(field, `Please provide a ${field}`)
+        if ( !((value && value.length > 0) || isNaN(value)) ) throwError(field, `Please provide a ${field}`)
       }
       if (constraint.pattern) {
         if(!(matchPattern(field,value))) throwError(field, constraint.pattern.message)
