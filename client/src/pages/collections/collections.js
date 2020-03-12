@@ -4,16 +4,26 @@ import  Add  from "./add"
 import  Assign  from "./assign"
 import  fetch  from "../../functions/fetch"
 
-const Collection = ({collection, actionsToggle, showActions, closeActions, actions}) => {
+const Collection = ({collection, actionsToggle, showActions, closeActions, actions, modal}) => {
 
 	var toggle = (evt) => {
-        actionsToggle.show  && (actionsToggle.id == collection.id) ?
-        closeActions() :
-        showActions(collection)
-
-		//$(evt.target).css('outline-color', 'green');
+        if (actionsToggle.show  && (actionsToggle.id == collection.id)) closeActions()
+        else showActions(collection)
 	};
-	
+    
+    async function deleteCollection() {
+        await modal.confirm({
+            message: 'Are you sure you want to delete this record?',
+            status: 'warning'
+        })
+        // .then
+        var form = new FormData();
+        for ( var key in collection ) form.append(key, collection[key])      
+        let response = await fetch.deleteCollection(form)
+
+        alert.show(response)     
+    }
+    
 	return (
         <tr>
             <td class="px-4 py-5 border-b border-gray-800">
@@ -40,16 +50,16 @@ const Collection = ({collection, actionsToggle, showActions, closeActions, actio
             (actionsToggle.show && (actionsToggle.id == collection.id)) ?
             (
             <span id="actions" class={`absolute inline-block flex flex-col`}>
-                <button onclick={(e)=>actions.toggleAssign(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                <button onclick={(e)=> actions.toggleAssign(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fas fa-link"></i>
                 </button>
                 <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </button>
-                <button onclick={(e)=>actions.toggleAdd(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                <button onclick={(e)=> actions.toggleAdd(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                <button onclick={(e)=> deleteCollection(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fa fa-trash"></i>
                 </button>
             </span>
@@ -75,11 +85,11 @@ export default initial => ({
     showActions: collection => state => ({ actionsToggle: { show: true, id: collection.id }}),
     closeActions: _ => state => ({ actionsToggle: { show: false }}),
     view: (evt) => state => ({ cat: 'meow' }),
-    delete: (evt) => state => ({ cat: 'meow' }),
+    delete: collection => (state, actions) => fetch.deleteCollection(collection).then(actions.setCollections),
     ...Add.actions,
     ...Assign.actions
   },
-  view: (state, actions) => ({match, alert}) => {
+  view: (state, actions) => ({match, alert, modal}) => {
     const AddModal = Add.view
     const AssignModal = Assign.view
 
@@ -134,7 +144,10 @@ export default initial => ({
                 <tbody>      
                 {             
                 state.collections.map((collection, index) => (
-                    <Collection actions={actions} collection={collection} actionsToggle={state.actionsToggle} showActions={actions.showActions} closeActions={actions.closeActions}/>
+                    <Collection actions={actions} 
+                    collection={collection} actionsToggle={state.actionsToggle} 
+                    showActions={actions.showActions} closeActions={actions.closeActions}
+                    modal={modal}/>
                 ))
                 }           
                 </tbody>

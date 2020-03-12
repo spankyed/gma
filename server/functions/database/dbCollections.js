@@ -21,7 +21,7 @@ exports.addCollection = function (obj) {
 };
 exports.getCollections = function (obj) {
     return this.readJson(collectionsPath).then(function (collectionsFile) {
-        console.log(collectionsFile.get('collections').value())
+        //console.log(collectionsFile.get('collections').value())
         return collectionsFile.get('collections').value()
     });
 };
@@ -35,15 +35,16 @@ exports.getCollectionById = function (id) {
     })
 };
 
-// delete a collection by collectionId
-exports.deleteCollectionById = function (obj) {
+// delete collection by id
+exports.deleteCollection = function (collection) {
+    console.log('collection deleted /n', collection)
     return this.readJson(collectionsPath).then(function (collectionsFile) { 
         return collectionsFile.get('collections').remove({ 
-            id: obj.collectionId 
+            id: collection.id // ensure typeof id = db.id ... change db value to strings
         }).write(); 
     });
 };
-// delete a collection by collectionId
+// edit collection by id
 exports.editCollection = function (collection) {
     console.log("collection",collection,collection.id)
     return this.readJson(collectionsPath).then(function (collectionsFile) { 

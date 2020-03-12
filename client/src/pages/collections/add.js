@@ -12,8 +12,8 @@ export default (initial => ({
   state: initial,
   actions: {
     toggleAdd: collection => state => ({...initial, showAdd: !state.showAdd, collection: collection || initial.collection}),
-    toggleActive: _ => state => ({collection: {...state.collection, status:1}}),
-    toggleInactive: _ => state => ({collection: {...state.collection, status:0}}),
+    toggleActive: _ => state => ({collection: {...state.collection, status: 1}}),
+    toggleInactive: _ => state => ({collection: {...state.collection, status: 0}}),
     input: value => value,
     ...validate.actions
   },

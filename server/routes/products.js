@@ -31,7 +31,7 @@ module.exports = function (db){
         count: count
       });
     } catch (error) {
-      console.log(error)
+      console.error(error)
       res.json({
         success: false,
         message: 'Error retrieving products',

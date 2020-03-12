@@ -37,11 +37,29 @@ module.exports = function (db){
       collections: collections
     });
   }
+
+   async function remove(req, res, next) {
+    var form = req.body
+    try { var collections = await db.deleteCollection(form) } 
+    catch (error) { // catch not tested
+      console.error(error)
+      res.json({
+        status: "error",
+        message: 'Error Deleteing Collection',
+        collections: collections || undefined
+      })
+    }
+    res.json({
+      status: "success",
+      message: 'Collection Successfully Deleted',
+      collections: collections
+    });
+  }
   
   async function list(req, res, next){
     try { var collections = await db.getCollections() } 
     catch (error) {
-      console.log(error)
+      console.error(error)
       res.json({
         success: false,
         message: 'Error retrieving collections',
@@ -57,7 +75,8 @@ module.exports = function (db){
 
   const collections = require('express').Router();
   collections.post('/add', upload.any(), add)  
-    collections.post('/edit', upload.any(), edit)  
+  collections.post('/edit', upload.any(), edit)  
+  collections.post('/delete', upload.any(), remove)  
   collections.get('/list', list)  
 
   return collections

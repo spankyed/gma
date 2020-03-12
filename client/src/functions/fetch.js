@@ -11,13 +11,16 @@ const postRequest = async (url,data) => {
     return await fetch(url, {
         method: 'POST',
         body: data
-    }).json();
-  
+    }).then((response) => {
+      //response.json().then(f=>console.log('ffs',f))
+      return response.json();
+    });
   //.catch(err => console.log(err))
 }
+
 
 export default {
   getCollections:  _ => getRequest('/collections/list'),
   getFilteredProductsByPage:  (query,page) => getRequest('/products/pagelist' + `?filter=${query}&page=${page}`),
-  //getQuery: query => getRequest(API_URL + `?filter=${query}&type=tag`)
+  deleteCollection: collection => postRequest('/collections/delete', collection)
 }

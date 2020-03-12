@@ -4,6 +4,7 @@ import { location, Route,  Switch, Link } from "@hyperapp/router"
 import './style.scss'
 import  data  from './data'
 import  Alert  from './components/alert'
+import  Modal  from './components/modal'
 import  Nav  from './components/nav'
 import  Dash  from './pages/dash'
 import  Tasks  from './pages/tasks/tasks'
@@ -20,6 +21,7 @@ const state = {
   location: location.state, 
   nav: Nav.state,
   alert: Alert.state,
+  modal: Modal.state,
   messages: messages.state,
   tasks: tasks.state,
   products: products.state,
@@ -30,6 +32,7 @@ const actions = {
   location: location.actions,
   nav: Nav.actions,
   alert: Alert.actions,
+  modal: Modal.actions,
   messages: messages.actions,
   tasks: tasks.actions,
   products: products.actions,
@@ -39,6 +42,7 @@ const actions = {
 const view = ( state, actions ) => {
   const Navbar = Nav.view(state.nav, actions.nav)
   const AlertView = Alert.view(state.alert, actions.alert)
+  const ModalView = Modal.view(state.modal, actions.modal)
   const index = {
     messages: messages.view(state.messages, actions.messages),
     tasks: tasks.view(state.tasks, actions.tasks),
@@ -56,9 +60,10 @@ const view = ( state, actions ) => {
         <Route parent path="/tasks" render={ index.tasks } />    
         <Route parent path="/products" render={ index.products } />  
         {/* <Route parent path="/products/?collection_id" render={ index.products } />  */}
-        <Route parent path="/collections" render={ _ => <index.collections alert={actions.alert}/>} />       
+        <Route parent path="/collections" render={ _ => <index.collections alert={actions.alert} modal={actions.modal}/>} />       
       </Switch>
       <AlertView path={ state.location.pathname }></AlertView>
+      <ModalView path={ state.location.pathname }></ModalView>
     </div>
   )
 }
