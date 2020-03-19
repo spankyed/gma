@@ -1,13 +1,17 @@
 import { h } from 'hyperapp';
 import { Link, Route } from "@hyperapp/router"
+import  validate  from "../../functions/validate"
 
-export default {
-  state: {
-    form: null,
-    showAdd: false,
-    src: "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
-    fileName: 'No file selected'
-  },
+let initial = {
+  //form: null,
+  showAdd: false,
+  src: "https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg",
+  fileName: 'No file selected',
+  ...validate.state
+}
+
+export default (initial => ({
+  state: initial,
   actions: {
     toggleAdd: _ => state => ({showAdd: !state.showAdd}),
     preview: (evt) => state => ({ src: URL.createObjectURL(evt.target.files[0]), fileName: evt.target.files[0].name }),
@@ -15,24 +19,24 @@ export default {
   view: ({state, actions}) =>_=> {
     
     async function submit(){
-      state.form = new FormData();
+      var form = new FormData();
       var files = document.getElementById('image').files,
           file;
       if(files.length > 0){
-        files = file[0]
+        file = files[0]
         console.log(file)
       }
 
-      state.form.append('file', file);
+      form.append('file', file);
       var elements = document.forms["add"].elements;
       for (var i=0; i < elements.length-2; i++){ //-2 for buttons
-        state.form.append(elements[i].id, elements[i].value)
+        form.append(elements[i].id, elements[i].value)
       }
 
       /*
       let response = await fetch('/products/add', {
         method: 'POST',
-        body: state.form
+        body: form
       });
   
       let result = await response.json();
@@ -126,7 +130,7 @@ export default {
       </div>  
       )   
   }
-}  
+}))(initial)   
 
 
 

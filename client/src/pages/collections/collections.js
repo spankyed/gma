@@ -20,7 +20,6 @@ const Collection = ({collection, actionsToggle, showActions, closeActions, actio
         var form = new FormData();
         for ( var key in collection ) form.append(key, collection[key])      
         let response = await fetch.deleteCollection(form)
-
         alert.show(response)     
     }
     
@@ -53,9 +52,11 @@ const Collection = ({collection, actionsToggle, showActions, closeActions, actio
                 <button onclick={(e)=> actions.toggleAssign(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fas fa-link"></i>
                 </button>
-                <button onclick={actions.toggleAssign} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                </button>
+                <Link to={`products/${collection.title}`}>
+                    <a href="#"  class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                </Link>
                 <button onclick={(e)=> actions.toggleAdd(collection)} type="button" class="text-sm flex-initial bg-black-alt hover:bg-gray-800 border border-gray-800 text-white font-normal py-2 px-4 ">
                     <i class="fas fa-pencil-alt"></i>
                 </button>

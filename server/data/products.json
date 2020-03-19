@@ -127,17 +127,6 @@
       "size": "as",
       "collection": "Dresses",
       "created": 1581984580696
-    },
-    {
-	  "id": 14,
-      "file": "undefined",
-      "image": "",
-      "description": "asd",
-      "price": "",
-      "quantity": "as",
-      "size": "ds",
-      "collection": "Dresses",
-      "created": 1581988938591
     }
   ],
   "user": {},

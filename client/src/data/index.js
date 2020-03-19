@@ -1,11 +1,11 @@
 // data file
 const constants = {
   pathColors: [
-    { path: '/', color: 'yellow'},
-    { path: '/messages', color: 'red'},
-    { path: '/tasks', color: 'green'},
-    { path: '/products', color: 'pink'},
-    { path: '/collections', color: 'blue'}
+    { path: '', color: 'yellow'},
+    { path: 'messages', color: 'red'},
+    { path: 'tasks', color: 'green'},
+    { path: 'products', color: 'pink'},
+    { path: 'collections', color: 'blue'}
   ]
 }
 
@@ -36,14 +36,14 @@ const products = [
 const collections = [
   {
     "id": 1,
-    "title": "Silk Dress",
+    "title": "Silk",
     "collection": ["Dress", "Women"],
     "image": "https://res.cloudinary.com/duua3lsu1/image/upload/v1557590908/blog/task-grid-thumbnail.png",
     "created": "June 12, 2019"
   },
   {
     "id": 2,
-    "title": "Silk Dress",
+    "title": "Furniture",
     "collection": ["Dress", "Women"],
     "image": "https://res.cloudinary.com/duua3lsu1/image/upload/v1557590908/blog/task-grid-thumbnail.png",
     "created": "June 12, 2019"

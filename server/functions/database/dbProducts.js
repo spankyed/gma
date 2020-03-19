@@ -34,9 +34,9 @@ exports.getProductById = function (id) {
     })
 };
 
-exports.getFilteredProductsByPage = function (query) {
-    let last = query.page * 4,
-        first = last - 4
+exports.getFilteredProductsByPage = function (query, productsPerPage) {
+    let last = query.page * productsPerPage,
+        first = last - productsPerPage
     return this.readJson(productsPath).then(function (productsFile) {
         return productsFile.get('products').filter((product)=>{
             return Object.keys(product).some(prop => { 

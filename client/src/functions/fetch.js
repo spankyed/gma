@@ -21,6 +21,7 @@ const postRequest = async (url,data) => {
 
 export default {
   getCollections:  _ => getRequest('/collections/list'),
+  getFilteredProductsByTablePage:  (query,page) => getRequest('/products/tablelist' + `?filter=${query}&page=${page}`),
   getFilteredProductsByPage:  (query,page) => getRequest('/products/pagelist' + `?filter=${query}&page=${page}`),
   deleteCollection: collection => postRequest('/collections/delete', collection)
 }

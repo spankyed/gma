@@ -58,7 +58,8 @@ const view = ( state, actions ) => {
         <Route path="/dash" render={ Dash } /> 
         <Route parent path="/messages" render={ index.messages } />   
         <Route parent path="/tasks" render={ index.tasks } />    
-        <Route parent path="/products" render={ index.products } />  
+        <Route parent path="/products" render={ index.products } /> 
+        {/* <Route parent path="/products/:collection" render={ index.products } />   */}
         {/* <Route parent path="/products/?collection_id" render={ index.products } />  */}
         <Route parent path="/collections" render={ _ => <index.collections alert={actions.alert} modal={actions.modal}/>} />       
       </Switch>

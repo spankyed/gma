@@ -21,10 +21,10 @@ export default (initial => ({
   actions: {
     toggleAssign: collection => state => ({...initial, showAssign: !state.showAssign, collection: collection || initial.collection}),
     setCollection: collection => ({ collection: collection }),
+    setCollections: ({collections}) => ({ collections: collections }), //getFilteredProductsByTablePage
     getCollections: _ => (state, actions) => fetch.getCollections().then(actions.setCollections),
-    setCollections: ({collections}) => ({ collections: collections }),
-    getProducts: _ => ({query, currPage}, actions) => fetch.getFilteredProductsByPage(query,currPage).then(actions.setProducts),    
     setProducts: ({products, count}) => ({ products: products, pageCount: Math.ceil(count / 4) }), // fn passed server response {products, count,...}
+    getProducts: _ => ({query, currPage}, actions) => fetch.getFilteredProductsByTablePage(query,currPage).then(actions.setProducts),    
     preview: (product) => state => ({preview: { id: product.id, src:  product.image }}),
     select: product => state => ({selected:[...state.selected, product]}),
     deselect: product => state => ({selected: state.selected.filter(selected=>selected.id !== product.id)}),
@@ -99,7 +99,7 @@ export default (initial => ({
                     </div>
                   </div>
                   <div class="w-full">
-                    <table oncreate={()=>fetch.getFilteredProductsByPage('',1).then(actions.setProducts)} class="min-w-full leading-normal text-gray-100">
+                    <table oncreate={actions.getProducts} class="min-w-full leading-normal text-gray-100">
                       <tbody class={`${(state.errors.selected) && "border border-red-600"}`} >
                       {
                         state.products.map((product, index) => (
