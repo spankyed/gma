@@ -14,7 +14,7 @@
     "@hyperapp/router": "^0.7.2",
     "carbon-components": "^10.3.1",
     "hyperapp": "^1.2.9",
-    "serve": "^10.1.1"
+    "serve": "^10.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
