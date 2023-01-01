@@ -24,7 +24,7 @@
     "@fullhuman/postcss-purgecss": "^1.1.0",
     "@tailwindcss/custom-forms": "^0.2.1",
     "tailwindcss": "^1.0.4",
-    "parcel": "^1.11.0",
+    "parcel": "^2.8.2",
     "sass": "^1.21.0"
   }
 }
